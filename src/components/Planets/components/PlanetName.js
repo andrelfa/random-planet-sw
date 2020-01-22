@@ -6,10 +6,10 @@ const PlanetName = ({name}) => {
   const Name = styled.h1`
     font-size: 40px;
     text-align: center;
-    border-bottom: 2px solid #000;
-    padding-bottom: 20px;
     color: #d44747;
-    text-transform: uppercase;
+    text-transform: lowercase;
+    font-family: Starjedi;
+    letter-spacing: 7px;
   `
 
   return (

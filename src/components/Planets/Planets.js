@@ -1,31 +1,39 @@
-import React, { useEffect, useState, Suspense, lazy } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import { randomNumberWithMaxNumber } from '../../utils/utils';
+import Planet from './components/Planet';
 
-const Planet = lazy(() => import('./components/Planet'));
+const MainContainer = styled.div`
+  display: flex;
+`
+
+const InnerContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;   
+  z-index: 9;
+`
+
+const NextBtn = styled.button`
+  margin-top: 20px;
+  border: 0;
+  background: #fff;
+  padding: 10px 50px;
+  text-transform: uppercase;
+`
 
 const Planets = () => {
 
-  const MainContainer = styled.div`
-    display: flex;
-  `
-
-  const InnerContainer = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-flow: column;
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;   
-    z-index: 9;
-  `
 
   const [planets, setPlanets] = useState(null);
-  const [selectedPlanet, setSelectedPlanet] = useState();
+  const [selectedPlanet, setSelectedPlanet] = useState(null);
 
   useEffect(() => {
 
@@ -53,16 +61,21 @@ const Planets = () => {
 
   }, [])
 
+  const setNewRandomSelectedPlanet = () => {
+    setSelectedPlanet(null);
+    setTimeout(() => {
+      setSelectedPlanet(planets[randomNumberWithMaxNumber(planets.length - 1)]);
+    }, 500);
+  }
+
   return (
       <MainContainer>
         <InnerContainer>
-          <Suspense fallback={<h1>Loading...</h1>}>
-            {selectedPlanet && <Planet planet={selectedPlanet} />}
-          </Suspense>
+          <Planet planet={selectedPlanet} />
           {planets?.length && (
-            <button onClick={() => setSelectedPlanet(planets[randomNumberWithMaxNumber(planets.length - 1)])}>
+            <NextBtn onClick={() => setNewRandomSelectedPlanet()}>
               Next
-            </button> 
+            </NextBtn> 
           )}
         </InnerContainer>
       </MainContainer>
