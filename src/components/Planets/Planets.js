@@ -29,12 +29,10 @@ const Planets = () => {
 
   useEffect(() => {
 
-    const fetchData = async () => {
-      await axios(`https://swapi.co/api/planets/`)
-        .then((planets) => {
-          return planets.data.count;
-        })
-        .then((planetsQty) => {
+    const fetchData = () => {
+      axios(`https://swapi.co/api/planets/`)
+        .then(planets => planets.data.count)
+        .then(planetsQty => {
           const numberOfPagesLeft = Math.ceil((planetsQty) / 10);
           let pagesLeftPromises = [];
           for (let i = 1; i <= numberOfPagesLeft; i++) {
@@ -42,9 +40,7 @@ const Planets = () => {
           }
           return Promise.all(pagesLeftPromises);
         })
-        .then((response) => {
-            return response.map(res => res.data.results).flat();
-        })
+        .then(response => response.map(res => res.data.results).flat())
         .then((response) => {
           setPlanets(response);
           setSelectedPlanet(response[randomNumberWithMaxNumber(response.length - 1)]);
