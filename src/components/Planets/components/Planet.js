@@ -1,11 +1,18 @@
 import React from 'react';
-import PlanetTitle from './PlanetTitle';
+import PlanetName from './PlanetName';
 import PlanetInfo from './PlanetInfo';
 import styled from 'styled-components';
 
 const MainContainer = styled.div`
-  background-color: #fffff0;
-  width: 40%;
+  background-color: #fff;
+  width: 75%;
+  min-height: 350px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 16px 3px rgba(255, 255, 255, 0.63);
+
+  @media (min-width: 769px) {
+    width: 50%;
+  }  
 `;
 
 const Planet = ({planet}) => {
@@ -23,7 +30,7 @@ const Planet = ({planet}) => {
 
   return (
     <MainContainer className="planet">
-      <PlanetTitle title={planet.name}/>
+      <PlanetName name={planet.name}/>
       <PlanetInfo info={planetInfo} />
     </MainContainer>
   )
