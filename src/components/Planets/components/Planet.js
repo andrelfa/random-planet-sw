@@ -5,24 +5,23 @@ import styled from 'styled-components';
 
 const MainContainer = styled.div`
   background-color: #fff;
-  width: 75%;
+  width: 7%;
   min-height: 375px;
   border-radius: 5px;
   box-shadow: 0px 0px 16px 1px rgba(255, 255, 255, 0.63);
   opacity: 0;
   transition: opacity 2s ease-out;
 
-  ${ planet => planet.children && `
+  ${planet => planet.children && `
     opacity: 1;
   `};
 
   @media (min-width: 769px) {
-    width: 50%;
+    width: 35%;
   }  
 `;
 
-const Planet = ({className, planet}) => {
-  
+const Planet = ({planet}) => {
 
   const pipePlanetData = (planetData) => {
     return {
@@ -34,7 +33,7 @@ const Planet = ({className, planet}) => {
   }
 
   return (
-    <MainContainer className={className}>
+    <MainContainer>
       {planet && (
         <>
           <PlanetName name={planet.name}/>

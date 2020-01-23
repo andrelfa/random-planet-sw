@@ -27,9 +27,13 @@ const NextBtn = styled.button`
   background: #fff;
   padding: 10px 50px;
   text-transform: uppercase;
+  border-radius: 5px;
+  color: #d44747;
+  font-weight: bold;
+  box-shadow: 0px 0px 16px 1px rgba(255, 255, 255, 0.63);
 `
 
-const Planets = () => {
+const Planets = ({teste}) => {
 
 
   const [planets, setPlanets] = useState(null);
@@ -52,6 +56,9 @@ const Planets = () => {
         .then((response) => {
           setPlanets(response);
           setSelectedPlanet(response[randomNumberWithMaxNumber(response.length - 1)]);
+          setTimeout(() => {
+            teste(false);
+          }, 2000);
           return response;
         })
         .catch(error => console.log("Couldn't fetch the planets", error));
@@ -59,7 +66,7 @@ const Planets = () => {
 
     fetchData();
 
-  }, [])
+  }, [teste])
 
   const setNewRandomSelectedPlanet = () => {
     setSelectedPlanet(null);
