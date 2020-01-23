@@ -33,7 +33,7 @@ const NextBtn = styled.button`
   box-shadow: 0px 0px 16px 1px rgba(255, 255, 255, 0.63);
 `
 
-const Planets = ({teste}) => {
+const Planets = ({show}) => {
 
 
   const [planets, setPlanets] = useState(null);

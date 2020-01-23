@@ -7,7 +7,7 @@ const App = () => {
 
   const [showLogo, setShowLogo] = useState(true);
 
-  const teste = (param) => {
+  const showPlanet = (param) => {
     setShowLogo(param);
   }
 
@@ -15,7 +15,7 @@ const App = () => {
     <div>
       <NightSky />
       {showLogo && <Logo />}
-      <Planets teste={teste} />
+      <Planets show={showPlanet} />
     </div>
   );
 }
