@@ -33,7 +33,7 @@ const Logo = () => {
     height: 50%;
     top: 50%;
     transform: translateX(-50%) translateY(-50%);	
-    animation: ${logoAnimation} 70s ease-out;
+    animation: ${logoAnimation} 25s ease-out;
     z-index: 9;   
   `
   

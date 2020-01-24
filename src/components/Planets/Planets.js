@@ -56,9 +56,9 @@ const Planets = ({show}) => {
         .then((response) => {
           setPlanets(response);
           setSelectedPlanet(response[randomNumberWithMaxNumber(response.length - 1)]);
-          setTimeout(() => {
-            teste(false);
-          }, 2000);
+          // setTimeout(() => {
+          //   show(false);
+          // }, 4000);
           return response;
         })
         .catch(error => console.log("Couldn't fetch the planets", error));
@@ -66,7 +66,7 @@ const Planets = ({show}) => {
 
     fetchData();
 
-  }, [teste])
+  }, [show])
 
   const setNewRandomSelectedPlanet = () => {
     setSelectedPlanet(null);
